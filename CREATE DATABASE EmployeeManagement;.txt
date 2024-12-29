@@ -1,0 +1,11 @@
+CREATE DATABASE EmployeeManagement;
+
+CREATE TABLE Employees (
+    EmployeeID INT AUTO_INCREMENT PRIMARY KEY, -- Unique identifier for each employee
+    FirstName VARCHAR(50) NOT NULL,            -- First name of the employee
+    LastName VARCHAR(50) NOT NULL,             -- Last name of the employee
+    Email VARCHAR(100) UNIQUE NOT NULL,        -- Email address (must be unique)
+    PhoneNumber VARCHAR(15),                   -- Optional phone number
+    HireDate DATE NOT NULL,                    -- The date when the employee was hired
+    Salary DECIMAL(10, 2) NOT NULL             -- Employee's salary (up to 10 digits with 2 decimals)
+);

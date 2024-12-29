@@ -1,0 +1,46 @@
+﻿@model IEnumerable<EmployeeManagementSystem.Models.Employee>
+@{
+    ViewData["Title"] = "GetAllEmployees";
+}
+
+<h1>Get All Employees</h1>
+
+<h2>Employee List</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Phone Number</th>
+            <th>Hire Date</th>
+            <th>Salary</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var employee in Model)
+        {
+            <tr>
+                <td>@employee.Id</td>
+                <td>@employee.FirstName</td>
+                <td>@employee.LastName</td>
+                <td>@employee.Email</td>
+                <td>@employee.PhoneNumber</td>
+                <td>@employee.HireDate.ToShortDateString()</td>
+                <td>@employee.Salary</td>
+                <td>
+                    <a asp-action="EditEmployee" asp-route-id="@employee.Id" class="btn btn-primary">Edit</a>
+                    <form asp-action="DeleteEmployee" method="post" style="display:inline;">
+                        <input type="hidden" name="id" value="@employee.Id" />
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-action="AddEmployee" class="btn btn-success">Add New Employee</a>
